@@ -5,9 +5,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -16,7 +13,10 @@ jobs:
       - run: npm ci
       - run: rm -rf dist && rm -rf themes 
       - name: Fetch file from another repository
-        run: wget https://raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document token.json
+        run: wget https://@ --output-document token.json
+      - name: Fetch file from another repository
+        run: git lfs fetch https://github.com/wizsolucoes/figma-tokens-wiz.git refs/heads/main:tokens.json
+        wget --header 'Authorization: token ${{secrets.GITHUB_TOKEN}}' raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
       - run: npm run build
 
   publish-gpr:
