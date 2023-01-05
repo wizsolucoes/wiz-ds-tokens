@@ -14,7 +14,7 @@ jobs:
       - run: rm -rf dist && rm -rf themes 
       - name: Fetch file from another repository
         run: |
-          wget --header "Authorization: token ${{secrets.GITHUB_TOKEN}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
       - run: npm run build
 
   publish-gpr:
