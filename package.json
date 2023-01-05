@@ -1,5 +1,5 @@
 {
-  "name": "@wizsolucoes/wiz-ds-tokens",
+  "name": "wiz-ds-tokens",
   "version": "1.0.0",
   "description": "Design system tokens",
   "main": "index.js",
