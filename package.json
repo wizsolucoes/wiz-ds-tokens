@@ -1,0 +1,24 @@
+{
+  "name": "@wizsolucoes/wiz-ds-tokens",
+  "version": "1.0.0",
+  "description": "Design system tokens",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens/base.json ./files/",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wizsolucoes/wiz-ds-tokens.git"
+  },
+  "author": "Raul Melo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wizsolucoes/wiz-ds-tokens/issues"
+  },
+  "homepage": "https://github.com/wizsolucoes/wiz-ds-tokens#readme",
+  "devDependencies": {
+    "style-dictionary": "^3.7.1",
+    "figma-tokens-converter-cli": "^1.3.0"
+  }
+}
