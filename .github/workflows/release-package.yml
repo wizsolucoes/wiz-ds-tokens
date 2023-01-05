@@ -3,21 +3,30 @@ name: Node.js Package
 on: [push] 
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 16
+      - run: rm -rf dist && rm -rf themes 
+      - name: Pegando tokens do figma-tokens
+        run: |
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
+
   build:
     runs-on: ubuntu-latest
+    needs: prepare
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: npm ci
-      - run: rm -rf dist && rm -rf themes 
-      - name: Fetch file from another repository
-        run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
       - run: npm run build
 
-  publish-gpr:
+
+  publish-npm:
     needs: build
     runs-on: ubuntu-latest
     permissions:
