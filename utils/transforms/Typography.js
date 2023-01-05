@@ -17,7 +17,6 @@ function TypographyInner (item) {
   const keysTypography = !!item.value ? Object.keys(item.value) : [];
   keysTypography.forEach( (key) => {
     if(item.value && item.value[key]) {
-      console.log('--------------> ', item.value[key])
       _valueTypography[key] = ConvertValue(item.value[key])
     }
   })
