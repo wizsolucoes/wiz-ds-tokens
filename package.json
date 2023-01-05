@@ -13,6 +13,9 @@
   },
   "author": "Raul Melo",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "bugs": {
     "url": "https://github.com/wizsolucoes/wiz-ds-tokens/issues"
   },
