@@ -13,7 +13,7 @@ jobs:
       - run: npm ci
       - run: rm -rf dist && rm -rf themes 
       - name: Fetch file from another repository
-        run: wget https://${GITHUB_TOKEN}@raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document token.json
+        run: wget https://${secrets.GITHUB_TOKEN}@raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document token.json
       - run: npm run build
 
   publish-gpr:
