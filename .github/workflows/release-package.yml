@@ -15,7 +15,8 @@ jobs:
       - name: Fetch file from another repository
         run: wget https://@ --output-document token.json
       - name: Fetch file from another repository
-        run: wget --header 'Authorization: token ${{secrets.GITHUB_TOKEN}}' raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
+        run: |
+          wget --header "Authorization: token ${{secrets.GITHUB_TOKEN}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json
       - run: npm run build
 
   publish-gpr:
