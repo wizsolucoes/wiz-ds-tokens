@@ -4,7 +4,7 @@
   "description": "Design system tokens",
   "main": "index.js",
   "scripts": {
-    "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens/base.json ./files/",
+    "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens.json ./files/",
     "build": "node index.js"
   },
   "repository": {
