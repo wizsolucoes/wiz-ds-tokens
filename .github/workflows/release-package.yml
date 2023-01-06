@@ -12,7 +12,7 @@ jobs:
       - run: rm -rf dist && rm -rf themes 
       - name: Pegando tokens do figma-tokens
         run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=base2.json
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens.json
       - name: lista de arquivos
         run: |
           ls -la
