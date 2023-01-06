@@ -10,9 +10,6 @@ jobs:
         with:
           node-version: 16
       - run: rm -rf dist && rm -rf themes 
-      - name: Pegando tokens do figma-tokens
-        run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens.json
 
   build:
     runs-on: ubuntu-latest
@@ -25,6 +22,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Pegando tokens do figma-tokens
+        run: |
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens.json
       - run: npm ci
       - name: lista de arquivos
         run: |
