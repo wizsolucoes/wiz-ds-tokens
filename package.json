@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens.json ./files/",
-    "build": "node index.js"
+    "build": "node index.js",
+    "pretest": "figma-tokens-converter-cli parseFigmaTokens ./.MOCK_TOKENS/base.json ./files/",
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
