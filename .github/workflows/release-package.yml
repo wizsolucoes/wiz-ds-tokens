@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           node-version: 16
-      - run: rm -rf dist && rm -rf themes 
+      - run: rm -rf dist && rm -rf themes && tokens.json 
 
   build:
     runs-on: ubuntu-latest
@@ -24,13 +24,12 @@ jobs:
           node-version: 16
       - name: Pegando tokens do figma-tokens
         run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens.json
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokenspoc.json --output-document=tokens.json
       - run: npm ci
-      - name: lista de arquivos
-        run: |
-          ls -la
       - run: npm run build
-
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: (GitHub action) Transform Tokens
 
   publish-npm:
     needs: build
