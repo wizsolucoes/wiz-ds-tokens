@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           node-version: 16
-      - run: rm -rf dist && rm -rf themes && tokens.json 
+      - run: rm -rf dist && rm -rf themes && rm -rf tokens.json
 
   build:
     runs-on: ubuntu-latest
