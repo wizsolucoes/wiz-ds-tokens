@@ -12,6 +12,11 @@
     "url": "git+https://github.com/wizsolucoes/wiz-ds-tokens.git"
   },
   "author": "Raul Melo",
+  "contributors": [
+    {
+      "name": "Raul Fernandez"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wizsolucoes/wiz-ds-tokens/issues"
