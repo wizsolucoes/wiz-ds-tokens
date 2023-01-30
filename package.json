@@ -1,6 +1,6 @@
 {
-  "name": "@wizsolucoes/wiz-ds-tokens",
-  "version": "1.0.0",
+  "name": "@wizco/wiz-ds-tokens",
+  "version": "0.0.1",
   "description": "Design system tokens",
   "main": "index.js",
   "scripts": {
