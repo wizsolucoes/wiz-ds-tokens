@@ -1,11 +1,14 @@
 {
-  "name": "@wizco/wiz-ds-tokens",
+  "name": "@wizco/fnx-tokens",
   "version": "0.0.11",
   "description": "Design system tokens",
   "main": "index.js",
   "scripts": {
     "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens/base.json ./files/",
     "build": "node index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
