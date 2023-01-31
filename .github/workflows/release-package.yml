@@ -3,6 +3,7 @@ name: Node.js Package
 on:
   push:
     branches: [ release/* ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,10 +27,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org
-          scope: '@wizco'
-          always-auth: true
-      - run: npm ci
-      - run: npm publish
+      - name: Publish
         env:
-          NODE_AUTH_TOKEN: '${{secrets.NPM_TOKEN }}'
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
+          npm config set access public
+          npm publish
