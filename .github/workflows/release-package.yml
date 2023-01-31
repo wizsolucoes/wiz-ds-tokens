@@ -16,7 +16,7 @@ jobs:
       - name: build
         run: npm run build
 
-  publish-gpr:
+  publish-npm:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -29,8 +29,9 @@ jobs:
           node-version: 16
       - name: Publish
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_KEY}}
         run: |
-          npm config set '//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
+          npm config set '@wizco//registry.npmjs.org/:_authToken' '${NPM_TOKEN}'
+          npm config set _authToken $NPM_TOKEN}
           npm config set access public
-          npm publish
+          npm config set save-exact true
