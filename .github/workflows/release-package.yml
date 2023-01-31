@@ -5,22 +5,15 @@ on:
     branches: [ release/* ]
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Download tokens
-        run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
-      - run: npm ci
-      - name: build
-        run: npm run build
+      - run: rm -rf dist && rm -rf themes && rm -rf tokens.json
 
-  publish-gpr:
-    needs: build
+
+  build-and-publish:
+    needs: prepare
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -31,7 +24,12 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org
+      - name: Download tokens
+        run: |
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
       - run: npm ci
+      - name: build
+        run: npm run build
       - name: list files
         run: ls -la
       - name: clear files
