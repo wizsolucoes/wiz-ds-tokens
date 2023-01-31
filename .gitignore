@@ -8,7 +8,7 @@ lerna-debug.log*
 .pnpm-debug.log*
 files
 dist
-*.DS_Store
+.DS_Store*
 themes/*
 tokens/*
 
