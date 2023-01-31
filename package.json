@@ -1,6 +1,6 @@
 {
   "name": "@wizco/fnx-tokens",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Tokens do Design System da Fenix",
   "main": "index.js",
   "scripts": {
