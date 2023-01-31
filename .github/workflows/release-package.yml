@@ -5,15 +5,8 @@ on:
     branches: [ release/* ]
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: rm -rf dist && rm -rf themes && rm -rf tokens.json
-
   build:
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
