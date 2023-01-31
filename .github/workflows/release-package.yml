@@ -15,9 +15,7 @@ jobs:
       - run: npm ci
       - name: build
         run: npm run build
-      - name: clear files
-        run: rm -rf package-lock.json tokens/ utils/
-
+        
   npm-publish:
     needs: build
     runs-on: ubuntu-latest
@@ -31,6 +29,8 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
       - run: npm ci
+      - name: clear files
+        run: rm -rf tokens/ utils/
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN_KEY}}
