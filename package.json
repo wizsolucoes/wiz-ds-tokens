@@ -1,8 +1,11 @@
 {
   "name": "@wizco/fnx-tokens",
   "version": "0.0.11",
-  "description": "Design system tokens",
+  "description": "Tokens do Design System da Fenix",
   "main": "index.js",
+  "files": [
+    "/themes/*"
+  ],
   "scripts": {
     "prebuild": "figma-tokens-converter-cli parseFigmaTokens ./tokens/base.json ./files/",
     "build": "node index.js"
@@ -14,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/wizsolucoes/wiz-ds-tokens.git"
   },
-  "author": "Raul Melo",
+  "author": "Wizco",
   "contributors": [
     {
       "name": "Raul Fernandez"

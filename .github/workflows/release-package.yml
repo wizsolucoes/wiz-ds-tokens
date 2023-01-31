@@ -15,8 +15,10 @@ jobs:
       - run: npm ci
       - name: build
         run: npm run build
+      - name: clear files
+        run: rm -rf node_modules package-lock.json tokens/ utils/
 
-  publish-gpr:
+  npm-publish:
     needs: build
     runs-on: ubuntu-latest
     permissions:
