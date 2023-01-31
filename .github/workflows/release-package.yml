@@ -15,8 +15,8 @@ jobs:
       - run: npm ci
       - name: build
         run: npm run build
-        
-  npm-publish:
+
+  publish-gpr:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -29,8 +29,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
       - run: npm ci
-      - name: clear files
-        run: rm -rf tokens/ utils/
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN_KEY}}
