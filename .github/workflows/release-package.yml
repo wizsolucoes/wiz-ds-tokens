@@ -16,7 +16,7 @@ jobs:
       - name: build
         run: npm run build
       - name: clear files
-        run: rm -rf node_modules package-lock.json tokens/ utils/
+        run: rm -rf package-lock.json tokens/ utils/
 
   npm-publish:
     needs: build
