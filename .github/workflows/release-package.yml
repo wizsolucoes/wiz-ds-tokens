@@ -21,7 +21,7 @@ jobs:
           node-version: 16
       - name: Download tokens
         run: |
-          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokenspoc.json --output-document=tokens.json
+          wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens.json
       - run: npm ci
       - name: build
         run: npm run build
