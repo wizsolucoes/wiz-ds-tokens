@@ -1,8 +1,9 @@
 const StyleDictionary = require('style-dictionary')
 const metadata = require('./files/$metadata.json');
 const transformTypography = require('./utils/transforms/Typography').TypographyInner;
+const transformShadow = require('./utils/transforms/Shadow').convertTokenShadow;
 const themes = metadata.tokenSetOrder;
-const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
+
 
 ////////////////////////////////////////
 /// Configuração do Style Dictionary ///
@@ -24,16 +25,23 @@ function getStyleDictionary(brand) {
   }
 }
 
-
-
-
 function transformValue(propsToken) {
   if(propsToken.type === 'typography') {
     return transformTypography(propsToken)
   }
+  if (propsToken.type === 'boxShadow') {
+    const item = propsToken.value
+    return transformShadow(item)
+  }
   return propsToken.value
 }
 
+function globalTokens(brand = 'wiz') { 
+  if (['fenix', 'wiz', 'global'].includes(brand)) {
+    return `:root`
+  }
+  return `[data-theme=${brand}]`
+}
 
 themes.forEach( function(brand) {
   console.log('\n==============================================');
@@ -43,7 +51,7 @@ themes.forEach( function(brand) {
   .registerFormat({
     name: 'addThemeVariablesCSS',
     formatter: function(dictionary) {
-      const RootTheme  = brand === 'wiz' ? ':root' : `[data-theme=${brand}]`;
+      const RootTheme  = globalTokens(brand);
 return `${RootTheme} {
 ${dictionary.allProperties
   .map((prop) => {

@@ -25,7 +25,7 @@ jobs:
       - name: list files
         run: ls -la
       - name: clear files
-        run: rm -rf tokens/ utils/
+        run: rm -rf tokens/ utils/ .github/workflows
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN_KEY}}

@@ -9,7 +9,6 @@ function hasVariables(value) {
 }
 
 function ConvertValue(value, type) {
-  
   const _value = String(value)
   if(typeof _value === undefined) { 
     return ;
