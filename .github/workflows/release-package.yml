@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir tokens
           wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
-      - run: npm ci
+      - run: npm run install --legacy-peer-deps
       - name: build
         run: npm run build
       - name: list files
