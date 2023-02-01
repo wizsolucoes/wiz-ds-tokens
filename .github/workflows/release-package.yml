@@ -5,15 +5,7 @@ on:
     branches: [ release/* ]
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: rm -rf dist && rm -rf themes && rm -rf tokens.json
-
-
   build-and-publish:
-    needs: prepare
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -25,6 +17,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Download tokens
         run: |
+          mkdir tokens
           wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
       - run: npm ci
       - name: build
