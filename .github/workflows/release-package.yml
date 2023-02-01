@@ -11,6 +11,7 @@ jobs:
       packages: write
       contents: read
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -19,7 +20,7 @@ jobs:
         run: |
           mkdir tokens
           wget --header "Authorization: token ${{secrets.TOKEN_ACCESS_REPO}}" raw.githubusercontent.com/wizsolucoes/figma-tokens-wiz/main/tokens.json --output-document=tokens/base.json
-      - run: npm run install --legacy-peer-deps
+      - run: npm ci
       - name: build
         run: npm run build
       - name: list files
